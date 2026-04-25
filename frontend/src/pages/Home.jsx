@@ -36,11 +36,6 @@ export default function Home() {
           transition: { duration: 1, ease: [0.16, 1, 0.3, 1] },
           className: "max-w-5xl mx-auto space-y-12", children: [/*#__PURE__*/
 
-          _jsxs("div", { className: "inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-brand-primary text-[10px] font-black tracking-[0.2em] uppercase", children: [/*#__PURE__*/
-            _jsx(Sparkles, { className: "h-3 w-3" }), "Built by you \u2022 Mastered by you"] }
-
-          ), /*#__PURE__*/
-
           _jsxs("h1", { className: "text-6xl md:text-[120px] font-black tracking-tighter text-text-main leading-[0.85] uppercase", children: ["Your Journey. ", /*#__PURE__*/
             _jsx("br", {}), /*#__PURE__*/
             _jsx("span", { className: "text-transparent bg-clip-text bg-gradient-to-r from-brand-primary via-blue-400 to-emerald-400", children: "Your Code." }
