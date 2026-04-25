@@ -5,7 +5,7 @@
 [![Local First Architecture](https://img.shields.io/badge/Architecture-Local--First-059669?style=for-the-badge)]()
 [![Vite](https://img.shields.io/badge/Bundle-Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
 [![Tailwind CSS](https://img.shields.io/badge/Styling-Tailwind-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
-[![License](https://img.shields.io/badge/License-Apache--2.0-orange?style=for-the-badge)](LICENSE)
+
 
 ---
 
@@ -137,12 +137,6 @@ Contributions make the open-source community an amazing place to learn and creat
 3. **Commit** your Changes (`git commit -m 'Add some AmazingFeature'`)
 4. **Push** to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a **Pull Request**
-
----
-
-## 📄 License
-
-Distributed under the Apache-2.0 License. See `LICENSE` for more information.
 
 <div align="center">
 
