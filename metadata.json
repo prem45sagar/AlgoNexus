@@ -1,0 +1,5 @@
+{
+  "name": "AlgoNexus",
+  "description": "A premium, high-performance DSA platform with immersive UI and curated problem sets.",
+  "requestFramePermissions": ["microphone"]
+}

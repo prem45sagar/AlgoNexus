@@ -1,0 +1,31 @@
+
+> react-example@0.0.0 build
+> vite build -c frontend/vite.config.js
+
+vite v6.4.2 building for production...
+transforming...
+✓ 22 modules transformed.
+✗ Build failed in 290ms
+error during build:
+[vite:esbuild] Transform failed with 1 error:
+/Users/premsagar/Desktop/PROJECTS/AlgoNexus/frontend/src/pages/Problems.jsx:417:8: ERROR: "await" can only be used inside an "async" function
+file: /Users/premsagar/Desktop/PROJECTS/AlgoNexus/frontend/src/pages/Problems.jsx:417:8
+
+"await" can only be used inside an "async" function
+415|      try {
+416|        newTopics.forEach((topic, index) => {
+417|          await localStore.updateTopic(topic.id, { order: index + 1 });
+   |          ^
+418|        });
+419|        toast.success('Folder order updated');
+
+    at failureErrorWithLog (/Users/premsagar/Desktop/PROJECTS/AlgoNexus/node_modules/vite/node_modules/esbuild/lib/main.js:1467:15)
+    at /Users/premsagar/Desktop/PROJECTS/AlgoNexus/node_modules/vite/node_modules/esbuild/lib/main.js:736:50
+    at responseCallbacks.<computed> (/Users/premsagar/Desktop/PROJECTS/AlgoNexus/node_modules/vite/node_modules/esbuild/lib/main.js:603:9)
+    at handleIncomingPacket (/Users/premsagar/Desktop/PROJECTS/AlgoNexus/node_modules/vite/node_modules/esbuild/lib/main.js:658:12)
+    at Socket.readFromStdout (/Users/premsagar/Desktop/PROJECTS/AlgoNexus/node_modules/vite/node_modules/esbuild/lib/main.js:581:7)
+    at Socket.emit (node:events:518:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
