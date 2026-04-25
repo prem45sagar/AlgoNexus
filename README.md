@@ -2,7 +2,7 @@
 
 **The Ultimate DSA Mastery Engine & Personal Knowledge Workspace**
 
-[![MERN Stack](https://img.shields.io/badge/Stack-MERN-blue.svg?style=for-the-badge)](https://www.mongodb.com/mern-stack)
+[![Local First Architecture](https://img.shields.io/badge/Architecture-Local--First-059669?style=for-the-badge)]()
 [![Vite](https://img.shields.io/badge/Bundle-Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
 [![Tailwind CSS](https://img.shields.io/badge/Styling-Tailwind-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
 [![License](https://img.shields.io/badge/License-Apache--2.0-orange?style=for-the-badge)](LICENSE)
@@ -60,7 +60,7 @@ AlgoNexus features a **Modern Glassmorphic UI** designed for maximum focus and a
 | :------------------ | :---------------------------------------------------- |
 | **Frontend**  | React 19, Vite, TailwindCSS 4, Framer Motion, Zustand |
 | **Backend**   | Node.js, Express                                      |
-| **Database**  | MongoDB, Mongoose                                     |
+| **Database**  | IndexedDB (Local-First Architecture)                  |
 | **Charts**    | Recharts (Responsive & Aspect-Ratio Optimized)        |
 | **Editor**    | CodeMirror, React-MD-Editor                           |
 | **Utilities** | Axios, Cheerio, Turndown (Scraping), Lucide Icons     |
@@ -72,7 +72,6 @@ AlgoNexus features a **Modern Glassmorphic UI** designed for maximum focus and a
 ### Prerequisites
 
 - **Node.js** (v18+)
-- **MongoDB** (Local instance or MongoDB Atlas)
 
 ### 1. Clone the Repository
 
@@ -87,20 +86,13 @@ Create a `.env` file in the root directory:
 
 ```env
 PORT=3000
-MONGO_URI=your_mongodb_connection_string
 ```
 
 ### 3. Install Dependencies
 
 ```bash
-# Install root dependencies (concurrency)
+# Install all dependencies (Frontend and Backend are integrated)
 npm install
-
-# Install Frontend dependencies
-cd frontend && npm install
-
-# Install Backend dependencies
-cd ../backend && npm install
 ```
 
 ### 4. Run the Application
@@ -111,8 +103,7 @@ From the root directory:
 npm run dev
 ```
 
-- **Frontend:** `http://localhost:5173` (or redirected via Backend)
-- **Backend API:** `http://localhost:3000`
+- **Application URL:** `http://localhost:3000`
 
 ---
 
@@ -124,14 +115,14 @@ AlgoNexus/
 │   ├── src/
 │   │   ├── components/     # Shared UI Components (Glassmorphic)
 │   │   ├── pages/          # Main Views (Notes, Problems, Dashboard)
-│   │   ├── lib/            # API wrappers, stores (Zustand)
-│   │   └── App.jsx         # Routing & Core Layout
-│   └── package.json
+│   │   ├── lib/            # Local-First DB logic (IndexedDB), stores (Zustand)
+│   │   └── main.jsx        # Routing & Core Layout
+│   ├── index.html          # Vite Entry Template
+│   └── vite.config.js      # Vite Configuration
 ├── backend/                # Node.js API
-│   ├── config/             # DB & Server Config
-│   ├── models/             # Mongoose Schemas (Problem, Note, Folder)
-│   └── server.js           # Express Entry Point
-├── package.json            # Root Scripts (Concurrent dev)
+│   ├── routes/             # API Route Handlers
+│   └── server.js           # Express Entry Point (Serves Vite & Scraper API)
+├── package.json            # Root Dependencies & Scripts
 └── README.md               # You are here!
 ```
 
