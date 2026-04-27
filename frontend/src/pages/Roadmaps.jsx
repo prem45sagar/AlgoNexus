@@ -168,15 +168,15 @@ export default function Roadmaps() {
       ), /*#__PURE__*/
 
 
-      _jsxs("header", { className: "flex items-center justify-between", children: [/*#__PURE__*/
+      _jsxs("header", { className: "flex flex-col sm:flex-row sm:items-center justify-between gap-4", children: [/*#__PURE__*/
         _jsx("h1", { className: "text-3xl font-bold text-text-main", children: "Roadmap Planner" }), /*#__PURE__*/
-        _jsx("div", { className: "flex gap-3", children:
+        _jsx("div", { className: "flex gap-3 w-full sm:w-auto", children:
           view !== 'list' ? /*#__PURE__*/
-          _jsx("button", { onClick: () => {setView('list');resetForm();}, className: "px-4 py-2 rounded-lg bg-blue-500/20 text-blue-400 hover:bg-blue-500/30 transition-colors font-medium text-sm", children: "Cancel" }
+          _jsx("button", { onClick: () => {setView('list');resetForm();}, className: "w-full sm:w-auto px-4 py-2 rounded-lg bg-blue-500/20 text-blue-400 hover:bg-blue-500/30 transition-colors font-medium text-sm text-center", children: "Cancel" }
 
           ) : /*#__PURE__*/
 
-          _jsx("button", { onClick: () => setView('create'), className: "px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition-colors font-medium text-sm", children: "+ Create Roadmap" }
+          _jsx("button", { onClick: () => setView('create'), className: "w-full sm:w-auto px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition-colors font-medium text-sm text-center", children: "+ Create Roadmap" }
 
           ) }
 
@@ -211,11 +211,11 @@ export default function Roadmaps() {
 
           _jsxs("div", { className: "space-y-2", children: [/*#__PURE__*/
             _jsx("label", { className: "text-sm font-medium text-text-muted", children: "Topics *" }), /*#__PURE__*/
-            _jsxs("div", { className: "flex gap-3", children: [/*#__PURE__*/
+            _jsxs("div", { className: "flex flex-col sm:flex-row gap-3", children: [/*#__PURE__*/
               _jsx("input", {
                 type: "text",
                 placeholder: "Add a topic (e.g., Arrays, Binary Search)",
-                className: "flex-1 bg-bg-main border border-border-main rounded-lg px-4 py-3 text-text-main focus:outline-none focus:border-blue-500 transition-colors",
+                className: "w-full sm:flex-1 bg-bg-main border border-border-main rounded-lg px-4 py-3 text-text-main focus:outline-none focus:border-blue-500 transition-colors",
                 value: currentTopic,
                 onChange: (e) => setCurrentTopic(e.target.value),
                 onKeyDown: (e) => {
@@ -228,7 +228,7 @@ export default function Roadmaps() {
               _jsx("button", {
                 type: "button",
                 onClick: () => handleAddTopicToForm(),
-                className: "px-6 py-3 rounded-lg bg-bg-surface border border-border-main text-text-main hover:bg-bg-surface/80 transition-colors font-medium whitespace-nowrap", children:
+                className: "w-full sm:w-auto px-6 py-3 rounded-lg bg-bg-surface border border-border-main text-text-main hover:bg-bg-surface/80 transition-colors font-medium whitespace-nowrap text-center", children:
                 "Add Topic" }
 
               )] }
@@ -255,15 +255,15 @@ export default function Roadmaps() {
 
           ), /*#__PURE__*/
 
-          _jsxs("div", { className: "flex gap-3 pt-4", children: [/*#__PURE__*/
+          _jsxs("div", { className: "flex flex-col sm:flex-row gap-3 pt-4", children: [/*#__PURE__*/
             _jsx("button", {
               type: "submit",
               disabled: topics.length === 0 || !title.trim(),
-              className: "px-6 py-2.5 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition-colors font-medium disabled:opacity-50 disabled:cursor-not-allowed", children:
+              className: "w-full sm:w-auto px-6 py-2.5 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition-colors font-medium disabled:opacity-50 disabled:cursor-not-allowed text-center", children:
 
               view === 'create' ? 'Create Roadmap' : 'Save Changes' }
             ), /*#__PURE__*/
-            _jsx("button", { type: "button", onClick: () => {setView('list');resetForm();}, className: "px-6 py-2.5 rounded-lg bg-bg-surface border border-border-main text-text-main hover:bg-bg-surface/80 transition-colors font-medium", children: "Cancel" }
+            _jsx("button", { type: "button", onClick: () => {setView('list');resetForm();}, className: "w-full sm:w-auto px-6 py-2.5 rounded-lg bg-bg-surface border border-border-main text-text-main hover:bg-bg-surface/80 transition-colors font-medium text-center", children: "Cancel" }
 
             )] }
           )] }
@@ -287,23 +287,23 @@ export default function Roadmaps() {
           return (/*#__PURE__*/
             _jsxs("div", { className: "bg-bg-surface border border-border-main rounded-xl p-6 shadow-lg space-y-6", children: [/*#__PURE__*/
 
-              _jsxs("div", { className: "flex items-start justify-between", children: [/*#__PURE__*/
+              _jsxs("div", { className: "flex flex-col sm:flex-row sm:items-start justify-between gap-4", children: [/*#__PURE__*/
                 _jsxs("div", { className: "space-y-1", children: [/*#__PURE__*/
-                  _jsx("h2", { className: "text-2xl font-bold text-text-main", children: roadmap.title }),
+                  _jsx("h2", { className: "text-2xl font-bold text-text-main break-words", children: roadmap.title }),
                   roadmap.description && /*#__PURE__*/
                   _jsx("p", { className: "text-text-muted text-sm", children: roadmap.description })] }
 
                 ), /*#__PURE__*/
-                _jsxs("div", { className: "flex items-center gap-2", children: [/*#__PURE__*/
+                _jsxs("div", { className: "flex items-center gap-2 w-full sm:w-auto", children: [/*#__PURE__*/
                   _jsx("button", {
                     onClick: () => handleEditClick(roadmap),
-                    className: "px-4 py-1.5 rounded-lg bg-bg-surface border border-border-main text-text-muted hover:text-text-main hover:bg-bg-surface/80 transition-colors text-sm font-medium", children:
+                    className: "flex-1 sm:flex-none px-4 py-1.5 rounded-lg bg-bg-surface border border-border-main text-text-muted hover:text-text-main hover:bg-bg-surface/80 transition-colors text-sm font-medium text-center", children:
                     "Edit" }
 
                   ), /*#__PURE__*/
                   _jsx("button", {
                     onClick: () => confirmDeleteRoadmap(roadmap.id),
-                    className: "px-4 py-1.5 rounded-lg bg-rose-500/10 text-rose-400 hover:bg-rose-500/20 transition-colors text-sm font-medium", children:
+                    className: "flex-1 sm:flex-none px-4 py-1.5 rounded-lg bg-rose-500/10 text-rose-400 hover:bg-rose-500/20 transition-colors text-sm font-medium text-center", children:
                     "Delete" }
 
                   )] }
