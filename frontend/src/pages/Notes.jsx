@@ -41,7 +41,7 @@ export default function Notes() {
     if (SpeechRecognition) {
       const rec = new SpeechRecognition();
       rec.continuous = true;
-      rec.interimResults = false;
+      rec.interimResults = true;
       rec.lang = 'en-US';
       setRecognition(rec);
     }
@@ -54,9 +54,11 @@ export default function Notes() {
     }
 
     if (isListening) {
+      recognition.manuallyStopped = true;
       recognition.stop();
       setIsListening(false);
     } else {
+      recognition.manuallyStopped = false;
       let lastProcessedResultIndex = -1;
 
       recognition.onresult = (event) => {
@@ -67,26 +69,72 @@ export default function Notes() {
             lastProcessedResultIndex = i;
           }
         }
+        
         if (transcript) {
-          if (target === 'new') {
-            setNewNote((prev) => ({ ...prev, content: prev.content + (prev.content ? ' ' : '') + transcript }));
+          const textarea = document.querySelector('textarea.w-md-editor-text-input');
+          const space = ' ';
+          
+          if (textarea) {
+            const start = textarea.selectionStart || 0;
+            const end = textarea.selectionEnd || 0;
+            
+            if (target === 'new') {
+              setNewNote((prev) => {
+                const prevContent = prev.content || '';
+                const newContent = prevContent.substring(0, start) + space + transcript + prevContent.substring(end);
+                return { ...prev, content: newContent };
+              });
+            } else {
+              setEditingNote((prev) => {
+                if (!prev) return null;
+                const prevContent = prev.content || '';
+                const newContent = prevContent.substring(0, start) + space + transcript + prevContent.substring(end);
+                return { ...prev, content: newContent };
+              });
+            }
+            
+            setTimeout(() => {
+              const newPos = start + space.length + transcript.length;
+              textarea.setSelectionRange(newPos, newPos);
+              textarea.focus();
+            }, 0);
           } else {
-            setEditingNote((prev) => prev ? { ...prev, content: prev.content + (prev.content ? ' ' : '') + transcript } : null);
+            if (target === 'new') {
+              setNewNote((prev) => ({ ...prev, content: prev.content + (prev.content ? ' ' : '') + transcript }));
+            } else {
+              setEditingNote((prev) => prev ? { ...prev, content: prev.content + (prev.content ? ' ' : '') + transcript } : null);
+            }
           }
         }
       };
 
       recognition.onerror = (event) => {
         console.error('Speech recognition error:', event.error);
-        setIsListening(false);
+        if (event.error === 'not-allowed') {
+          recognition.manuallyStopped = true;
+          alert('Microphone access denied. Please check browser settings.');
+        }
       };
 
       recognition.onend = () => {
-        setIsListening(false);
+        if (!recognition.manuallyStopped) {
+          try {
+            lastProcessedResultIndex = -1;
+            recognition.start();
+          } catch (e) {
+            setIsListening(false);
+          }
+        } else {
+          setIsListening(false);
+        }
       };
 
-      recognition.start();
-      setIsListening(true);
+      try {
+        recognition.start();
+        setIsListening(true);
+      } catch (e) {
+        console.error('Error starting recognition:', e);
+      }
     }
   };
 
@@ -455,6 +503,7 @@ export default function Notes() {
               _jsx("label", { className: "text-sm font-medium text-text-muted", children: "Content (Markdown Supported) *" }), /*#__PURE__*/
               _jsxs("button", {
                 type: "button",
+                onMouseDown: (e) => e.preventDefault(),
                 onClick: () => toggleListening('new'),
                 className: cn(
                   "flex items-center gap-2 px-3 py-1 rounded-lg text-xs font-medium transition-all",
@@ -526,6 +575,7 @@ export default function Notes() {
               _jsx("label", { className: "text-sm font-medium text-text-muted", children: "Content (Markdown Supported) *" }), /*#__PURE__*/
               _jsxs("button", {
                 type: "button",
+                onMouseDown: (e) => e.preventDefault(),
                 onClick: () => toggleListening('edit'),
                 className: cn(
                   "flex items-center gap-2 px-3 py-1 rounded-lg text-xs font-medium transition-all",

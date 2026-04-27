@@ -182,23 +182,24 @@ export default function Dashboard() {
 
       _jsxs("div", { className: "grid grid-cols-1 lg:grid-cols-2 gap-8", children: [/*#__PURE__*/
 
-        _jsxs("div", { className: "bg-bg-surface border border-border-main rounded-[40px] p-8 shadow-sm min-w-0", children: [/*#__PURE__*/
+        _jsxs("div", { className: "bg-bg-surface border border-border-main rounded-[40px] p-5 sm:p-8 shadow-sm min-w-0", children: [/*#__PURE__*/
           _jsxs("h3", { className: "text-xl font-bold text-text-main mb-8 flex items-center gap-2", children: [/*#__PURE__*/
             _jsx(TrendingUp, { className: "h-5 w-5 text-brand-primary" }), "Module Distribution"] }
 
           ), /*#__PURE__*/
-          _jsx("div", { className: "w-full min-h-[300px]", children:
+          _jsx("div", { className: "w-full h-[350px] sm:h-[400px]", children:
             mounted && /*#__PURE__*/
-            _jsx(ResponsiveContainer, { width: "100%", aspect: 1.6, children: /*#__PURE__*/
-              _jsxs(BarChart, { data: overviewData, children: [/*#__PURE__*/
+            _jsx(ResponsiveContainer, { width: "100%", height: "100%", children: /*#__PURE__*/
+              _jsxs(BarChart, { data: overviewData, margin: { top: 10, right: 10, left: -25, bottom: 0 }, style: { outline: 'none' }, children: [/*#__PURE__*/
                 _jsx(CartesianGrid, { strokeDasharray: "3 3", stroke: "var(--color-border-main)", vertical: false }), /*#__PURE__*/
                 _jsx(XAxis, { dataKey: "name", stroke: "var(--color-text-muted)", fontSize: 12, tickLine: false, axisLine: false }), /*#__PURE__*/
-                _jsx(YAxis, { stroke: "var(--color-text-muted)", fontSize: 12, tickLine: false, axisLine: false }), /*#__PURE__*/
+                _jsx(YAxis, { stroke: "var(--color-text-muted)", fontSize: 12, tickLine: false, axisLine: false, width: 35 }), /*#__PURE__*/
                 _jsx(Tooltip, {
+                  cursor: { fill: 'transparent' },
                   contentStyle: { backgroundColor: 'var(--color-bg-surface)', border: '1px solid var(--color-border-main)', borderRadius: '12px' },
                   itemStyle: { color: 'var(--color-text-main)' } }
                 ), /*#__PURE__*/
-                _jsx(Bar, { dataKey: "value", radius: [8, 8, 0, 0], children:
+                _jsx(Bar, { dataKey: "value", radius: [8, 8, 0, 0], maxBarSize: 60, activeBar: false, style: { outline: 'none' }, children:
                   overviewData.map((entry, index) => /*#__PURE__*/
                   _jsx(Cell, { fill: entry.color }, `cell-${index}`)
                   ) }
@@ -209,14 +210,14 @@ export default function Dashboard() {
         ), /*#__PURE__*/
 
 
-        _jsxs("div", { className: "bg-bg-surface border border-border-main rounded-[40px] p-8 shadow-sm min-w-0", children: [/*#__PURE__*/
+        _jsxs("div", { className: "bg-bg-surface border border-border-main rounded-[40px] p-5 sm:p-8 shadow-sm min-w-0", children: [/*#__PURE__*/
           _jsxs("h3", { className: "text-xl font-bold text-text-main mb-8 flex items-center gap-2", children: [/*#__PURE__*/
             _jsx(Trophy, { className: "h-5 w-5 text-amber-400" }), "Problem Status"] }
 
           ), /*#__PURE__*/
-          _jsx("div", { className: "w-full min-h-[300px]", children:
+          _jsx("div", { className: "w-full h-[350px] sm:h-[400px]", children:
             mounted && /*#__PURE__*/
-            _jsx(ResponsiveContainer, { width: "100%", aspect: 1, children: /*#__PURE__*/
+            _jsx(ResponsiveContainer, { width: "100%", height: "100%", children: /*#__PURE__*/
               _jsxs(PieChart, { children: [/*#__PURE__*/
                 _jsx(Pie, {
                   data: statusData,
@@ -249,14 +250,14 @@ export default function Dashboard() {
         ), /*#__PURE__*/
 
 
-        _jsxs("div", { className: "bg-bg-surface border border-border-main rounded-[40px] p-8 shadow-sm min-w-0", children: [/*#__PURE__*/
+        _jsxs("div", { className: "bg-bg-surface border border-border-main rounded-[40px] p-5 sm:p-8 shadow-sm min-w-0", children: [/*#__PURE__*/
           _jsxs("h3", { className: "text-xl font-bold text-text-main mb-8 flex items-center gap-2", children: [/*#__PURE__*/
             _jsx(Calendar, { className: "h-5 w-5 text-emerald-400" }), "Recent Activity (Last 7 Days)"] }
 
           ), /*#__PURE__*/
-          _jsx("div", { className: "w-full min-h-[300px]", children:
+          _jsx("div", { className: "w-full h-[350px] sm:h-[400px]", children:
             mounted && /*#__PURE__*/
-            _jsx(ResponsiveContainer, { width: "100%", aspect: 1.6, children: /*#__PURE__*/
+            _jsx(ResponsiveContainer, { width: "100%", height: "100%", children: /*#__PURE__*/
               _jsxs(AreaChart, { data: activityData, children: [/*#__PURE__*/
                 _jsx("defs", { children: /*#__PURE__*/
                   _jsxs("linearGradient", { id: "colorCount", x1: "0", y1: "0", x2: "0", y2: "1", children: [/*#__PURE__*/
@@ -266,7 +267,7 @@ export default function Dashboard() {
                 ), /*#__PURE__*/
                 _jsx(CartesianGrid, { strokeDasharray: "3 3", stroke: "var(--color-border-main)", vertical: false }), /*#__PURE__*/
                 _jsx(XAxis, { dataKey: "date", stroke: "var(--color-text-muted)", fontSize: 12, tickLine: false, axisLine: false }), /*#__PURE__*/
-                _jsx(YAxis, { stroke: "var(--color-text-muted)", fontSize: 12, tickLine: false, axisLine: false }), /*#__PURE__*/
+                _jsx(YAxis, { stroke: "var(--color-text-muted)", fontSize: 12, tickLine: false, axisLine: false, width: 35 }), /*#__PURE__*/
                 _jsx(Tooltip, {
                   contentStyle: { backgroundColor: 'var(--color-bg-surface)', border: '1px solid var(--color-border-main)', borderRadius: '12px' },
                   itemStyle: { color: 'var(--color-text-main)' } }
