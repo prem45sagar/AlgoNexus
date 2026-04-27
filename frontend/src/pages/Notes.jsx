@@ -41,7 +41,7 @@ export default function Notes() {
     if (SpeechRecognition) {
       const rec = new SpeechRecognition();
       rec.continuous = true;
-      rec.interimResults = true;
+      rec.interimResults = false;
       rec.lang = 'en-US';
       setRecognition(rec);
     }
@@ -57,11 +57,14 @@ export default function Notes() {
       recognition.stop();
       setIsListening(false);
     } else {
+      let lastProcessedResultIndex = -1;
+
       recognition.onresult = (event) => {
         let transcript = '';
         for (let i = event.resultIndex; i < event.results.length; i++) {
-          if (event.results[i].isFinal) {
+          if (event.results[i].isFinal && i > lastProcessedResultIndex) {
             transcript += event.results[i][0].transcript;
+            lastProcessedResultIndex = i;
           }
         }
         if (transcript) {
