@@ -160,7 +160,8 @@ export default function Problems() {
     setError(null);
 
     try {
-      const response = await fetch('/api/import-problem', {
+      const apiUrl = import.meta.env.VITE_API_URL || '';
+      const response = await fetch(`${apiUrl}/api/import-problem`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ url: newQuestion.link })
